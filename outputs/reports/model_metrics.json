@@ -1,0 +1,187 @@
+{
+  "created_utc": "2026-10-14T13:30:54.573827+00:00",
+  "dataset_source": "UCI AI4I 2020 (official downloaded file)",
+  "dataset_rows": 10000,
+  "target": "Machine failure",
+  "target_definition": "Failure is labelled on this recorded operating row; this is not a future-horizon forecast.",
+  "input_features": [
+    "Type",
+    "Air temperature [K]",
+    "Process temperature [K]",
+    "Rotational speed [rpm]",
+    "Torque [Nm]",
+    "Tool wear [min]"
+  ],
+  "excluded_columns": [
+    "UDI",
+    "Product ID",
+    "TWF",
+    "HDF",
+    "PWF",
+    "OSF",
+    "RNF"
+  ],
+  "split": {
+    "type": "chronological UDI holdout",
+    "test_size": 0.2,
+    "train_udi_max": 8000,
+    "test_udi_min": 8001
+  },
+  "training_rows": 8000,
+  "test_rows": 2000,
+  "class_counts": {
+    "0": 9661,
+    "1": 339
+  },
+  "selection_metric": "failure-class F1, then failure-class recall",
+  "training_configuration": {
+    "random_state": 42,
+    "test_size": 0.2,
+    "split": "chronological; ordered by unique UDI",
+    "logistic_regression": {
+      "class_weight": "balanced",
+      "max_iter": 1500
+    },
+    "random_forest": {
+      "n_estimators": 250,
+      "class_weight": "balanced_subsample",
+      "min_samples_leaf": 2,
+      "n_jobs": -1
+    },
+    "numeric_preprocessing": "median imputation and StandardScaler, fit on training rows",
+    "categorical_preprocessing": "most-frequent imputation and one-hot encoding, fit on training rows"
+  },
+  "selected_model": "RandomForest",
+  "models": {
+    "LogisticRegression": {
+      "accuracy": 0.9455,
+      "precision_failure": 0.21774193548387097,
+      "recall_failure": 0.6923076923076923,
+      "f1_failure": 0.3312883435582822,
+      "roc_auc": 0.9090730788843997,
+      "confusion_matrix_labels_0_1": [
+        [
+          1864,
+          97
+        ],
+        [
+          12,
+          27
+        ]
+      ],
+      "classification_report": {
+        "NORMAL": {
+          "precision": 0.9936034115138592,
+          "recall": 0.9505354411014788,
+          "f1-score": 0.9715923898879333,
+          "support": 1961.0
+        },
+        "FAILURE": {
+          "precision": 0.21774193548387097,
+          "recall": 0.6923076923076923,
+          "f1-score": 0.3312883435582822,
+          "support": 39.0
+        },
+        "accuracy": 0.9455,
+        "macro avg": {
+          "precision": 0.6056726734988651,
+          "recall": 0.8214215667045855,
+          "f1-score": 0.6514403667231077,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.9784741127312744,
+          "recall": 0.9455,
+          "f1-score": 0.959106460984505,
+          "support": 2000.0
+        }
+      }
+    },
+    "RandomForest": {
+      "accuracy": 0.9925,
+      "precision_failure": 1.0,
+      "recall_failure": 0.6153846153846154,
+      "f1_failure": 0.7619047619047619,
+      "roc_auc": 0.9476196079969664,
+      "confusion_matrix_labels_0_1": [
+        [
+          1961,
+          0
+        ],
+        [
+          15,
+          24
+        ]
+      ],
+      "classification_report": {
+        "NORMAL": {
+          "precision": 0.9924089068825911,
+          "recall": 1.0,
+          "f1-score": 0.9961899923799847,
+          "support": 1961.0
+        },
+        "FAILURE": {
+          "precision": 1.0,
+          "recall": 0.6153846153846154,
+          "f1-score": 0.7619047619047619,
+          "support": 39.0
+        },
+        "accuracy": 0.9925,
+        "macro avg": {
+          "precision": 0.9962044534412955,
+          "recall": 0.8076923076923077,
+          "f1-score": 0.8790473771423732,
+          "support": 2000.0
+        },
+        "weighted avg": {
+          "precision": 0.9925569331983806,
+          "recall": 0.9925,
+          "f1-score": 0.9916214303857178,
+          "support": 2000.0
+        }
+      }
+    }
+  },
+  "selected_feature_importance": [
+    {
+      "feature": "numeric__Rotational speed [rpm]",
+      "importance": 0.23449240783729858
+    },
+    {
+      "feature": "numeric__Torque [Nm]",
+      "importance": 0.20662528762247892
+    },
+    {
+      "feature": "numeric__Estimated mechanical power [W]",
+      "importance": 0.19971472612058194
+    },
+    {
+      "feature": "numeric__Tool wear [min]",
+      "importance": 0.17605677496171168
+    },
+    {
+      "feature": "numeric__Temperature difference [K]",
+      "importance": 0.09813730296732051
+    },
+    {
+      "feature": "numeric__Air temperature [K]",
+      "importance": 0.04262331734755008
+    },
+    {
+      "feature": "numeric__Process temperature [K]",
+      "importance": 0.030938082200172884
+    },
+    {
+      "feature": "categorical__Type_L",
+      "importance": 0.004743625224161495
+    },
+    {
+      "feature": "categorical__Type_M",
+      "importance": 0.004238406434355981
+    },
+    {
+      "feature": "categorical__Type_H",
+      "importance": 0.0024300692843679775
+    }
+  ]
+}
