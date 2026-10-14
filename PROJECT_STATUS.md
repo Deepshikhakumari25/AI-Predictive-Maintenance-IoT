@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Part 1 is complete. Part 2 README and ignore-rule review are complete; the local `main` repository is prepared for its initial commit. No GitHub remote has been configured and nothing has been uploaded. The local Streamlit server is running at `http://localhost:8501`.
+Part 1 is complete. Part 2 README and ignore-rule review are complete; the local `main` repository has initial commit `362d51f`. No GitHub remote has been configured and nothing has been uploaded. The local Streamlit server is running at `http://localhost:8501`.
 
 ## Completed
 
@@ -17,6 +17,7 @@ Part 1 is complete. Part 2 README and ignore-rule review are complete; the local
 - Expanded the publication README with an architecture diagram, exact dataset columns, a real seeded CLI prediction, embedded screenshots, references, learning outcomes, future improvements, and disclaimer.
 - Hardened `.gitignore` and confirmed source, docs, tests, metrics, report, confusion figure, and all screenshots are the staged publication set; local data/model/history/cache/egg-info files are ignored.
 - Initialized a local `main` repository with GitHub Desktop's bundled Git 2.53.0.windows.4 and reviewed the staged file list. No remote is configured.
+- Created the local root commit `362d51f` (`Add predictive maintenance portfolio project`); the working tree was clean immediately afterward.
 
 ## Actual Training Results
 
@@ -62,8 +63,9 @@ Random Forest held-out confusion matrix: `[[1961, 0], [15, 24]]`. These are meas
 - Suggested exclude items: `.venv/`, `data/raw/ai4i2020.csv` (downloaded; cite UCI if redistributed), `data/processed/ai4i_engineered_features.csv`, `models/failure_classifier.joblib`, `outputs/predictions/event_history.jsonl`, and local cache files.
 - Reports and the small confusion-matrix figure are retained in the project so documented metrics are inspectable.
 - GitHub Desktop 3.6.6 is installed; its bundled Git works. Standalone Git is not on PATH. GitHub CLI 2.102.0 is installed but `gh auth status` reports no authenticated account. Global Git author identity is configured.
+- The exact-name public GitHub repository search returned zero matches. The user's private repositories cannot be inspected without signing in.
 - The project code has no separate license file. Choose a code license before publication if reuse rights are intended; the dataset's CC BY 4.0 license does not license this project's code.
-- Remaining action: sign in through GitHub Desktop, verify the intended account, publish this existing local repository as Public or Private as desired, then verify README/images/files on the actual GitHub URL. Do not claim publication until that is done.
+- Remaining action: sign in through GitHub Desktop, verify the intended account, publish this existing local repository as Public or Private as desired, then verify README/images/files on the actual GitHub URL. No URL, visibility, or successful push is claimed until that is done.
 
 ## Screenshot Inventory
 
